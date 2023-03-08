@@ -134,25 +134,31 @@ export const deleteUsuario = async (req, res) => {
 };
 
 export const getUsuarioLogin = async (req, res) => {
-  const {
-
-    email,
-
-
-    password,
-
-  } = req.body
   try {
+
+    console.log(req.body);
+
+    const { email, password } = req.body;
+    
+    // Buscar un usuario con el email y la contraseña recibidos
     const usuario = await Usuario.findOne({
-      where: { email: email, password: password
-      },
+      where: { email, password },
     });
-    console.log("este es el usuario:",usuario);
+
     if (!usuario) {
-      return res.status(404).json({ mensaje: "Usuario no encontrado", acceso: false });
+      return res.status(404).json({ mensaje: "Usuario no encontrado"});
     }
+    
+    // Si se encontró el usuario, incluir el atributo "tipoUsuario" en la respuesta
+    return res.status(200).json({ 
+      mensaje: "Usuario encontrado!!", 
+      usuario: {
+        id: usuario.id,
+        email: usuario.email,
+        tipoUsuario: usuario.tipoUsuario
+      }
+    });
   
-    res.status(200).json({acceso:true,usuario});
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: error.message });
