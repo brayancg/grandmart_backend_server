@@ -12,7 +12,7 @@ const credentials = {
 app.use(express.json());
 
 app.post('http://127.0.0.1:5173/login', (req, res) => {
-    const { email, password } = req.body;
+    const { email, password} = req.body;
     const values = [email, password];
     const connection = mysql.createConnection(credentials);
   
