@@ -12,25 +12,18 @@ const app = express();
 
 //  SETTINGS
 // Configuración de CORS
-app.use(
-  cors({
-    origin: "*", // O el dominio que permitirás
-  })
-);
-
-app.use(express.static(new URL("./uploads", import.meta.url).pathname));
-
+app.use(cors());
 
 //  MIDDLAWARES
 //esto permitira que cada vez que se envia algo al servidor en formato json
 //el servidor podra leerlo e interpretarlo guardandolo en req.body
 app.use(express.json());
-app.use(morgan('dev'))
-
+app.use(morgan("dev"));
 
 //  GLOBAL VARIABLES
 
 //  ROUTES
+
 app.use(usuariosRoutes);
 app.use(categoriaRoutes);
 app.use(imagenUsuariosRoutes);
