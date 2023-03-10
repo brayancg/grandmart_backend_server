@@ -34,3 +34,4 @@ export const ImagenUsuario = sequelizeDB.define(
   },
   { timestamps: true }
 );
+
