@@ -1,4 +1,4 @@
-import { ImagenUsuario } from "../../models/usuariosModel/ImagenesUsuariosModel.js";
+import { ImagenUsuario } from "../../models/usuariosModel/ImagenesUsuarios.js";
 import path from "path";
 import { Console } from "console";
 // Crear una nueva imagen de usuario
